@@ -1,3 +1,4 @@
+import { getCurrentBreakpoint } from '@finsweet/ts-utils';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -18,9 +19,12 @@ export const aboutHero = (): void => {
   const progressIndicator = groups.querySelector('.about-hero_progress-indicator') as HTMLElement;
 
   // Set sticky height to the height of groups + height of list - height of list wrapper
+  const multiplier = getCurrentBreakpoint() === 'main' ? 1 : 2;
   stickyWrapper.style.height = `${
-    groups.offsetHeight + list.offsetHeight - textWrapper.offsetHeight
+    (groups.offsetHeight + list.offsetHeight - textWrapper.offsetHeight) * multiplier
   }px`;
+
+  console.log('updated');
 
   // Get the content top and bottom positions
   const componentStyles = getComputedStyle(component);

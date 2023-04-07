@@ -10,5 +10,13 @@ export const slider = () => {
     arrows: false,
     speed: 350,
     easing: 'cubic-bezier(.165, .84, .44, 1)',
+    breakpoints: {
+      991: {
+        fixedWidth: '50%',
+      },
+      767: {
+        fixedWidth: '100%',
+      },
+    },
   }).mount();
 };

@@ -50,8 +50,10 @@ export const homeHero = () => {
     const scale = pathWidth / 286;
     const pathHeight = 278 * scale;
     const pathPosition = {
-      x: window.innerWidth / 2 + 64,
-      y: window.innerHeight / 2 - pathHeight / 2,
+      x: getPositionRelativeToParent(flipTo, component).left,
+      y: getPositionRelativeToParent(flipTo, component).top,
+      // x: window.innerWidth / 2 + 64,
+      // y: window.innerHeight / 2 - pathHeight / 2,
     };
 
     // define the heading animation
@@ -103,10 +105,8 @@ export const homeHero = () => {
 
     function moveLogo(e) {
       if (!toClip) return;
-
       const rect = toClip.getBoundingClientRect();
 
-      console.log(rect);
       pathPosition.x = e.clientX - rect.left - pathWidth / 2;
       pathPosition.y = e.clientY - rect.top - pathHeight / 2;
 
@@ -120,6 +120,28 @@ export const homeHero = () => {
         translateY: pathPosition.y,
         duration: 1,
       });
+    }
+
+    type Position = {
+      top: number;
+      left: number;
+    };
+
+    function getPositionRelativeToParent(element: HTMLElement, parent: HTMLElement): Position {
+      const position: Position = { top: 0, left: 0 };
+      let currentElement: HTMLElement | null = element;
+
+      while (currentElement && currentElement !== parent) {
+        position.top += currentElement.offsetTop;
+        position.left += currentElement.offsetLeft;
+        currentElement = currentElement.offsetParent as HTMLElement;
+      }
+
+      if (currentElement === null) {
+        throw new Error('The given parent is not an ancestor of the element.');
+      }
+
+      return position;
     }
   }
 };
