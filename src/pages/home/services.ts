@@ -1,15 +1,10 @@
 import { getCurrentBreakpoint } from '@finsweet/ts-utils';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-import { getDistanceOfElementFromParentElement } from '$utils/getDistanceOfElementFromParentElement';
 
 /**
  * Adjust the home services section layout.
  */
 export const homeServices = (): void => {
-  console.log('services');
-
   if (getCurrentBreakpoint() !== 'main') return;
 
   // Get the home services section and its child elements
@@ -63,19 +58,4 @@ export const homeServices = (): void => {
 
     timeline.to(listChildren[index - 1], { opacity: 0, scale: 0.9 });
   });
-
-  // // Adjust the header's marginBottom and the list's marginTop based on the height of the first list item
-  // if (!heightOfListItem) return;
-  // const headerStyles = getComputedStyle(header);
-  // header.style.marginBottom = `${parseFloat(headerStyles.marginBottom) + heightOfListItem}px`;
-  // list.style.marginTop = `${-heightOfListItem}px`;
-
-  // // Get the distance between the list and its parent (section)
-  // const listItemTop = getDistanceOfElementFromParentElement(list, section);
-
-  // // Set the top property for each list item based on the calculated distance
-  // if (!listItemTop) return;
-  // [...list.children].forEach((child: Element) => {
-  //   (child as HTMLElement).style.top = `${listItemTop.y}px`;
-  // });
 };

@@ -1,5 +1,4 @@
 import { gsap } from 'gsap';
-import { Flip } from 'gsap/Flip';
 import { MorphSVGPlugin } from 'gsap/MorphSVGPlugin';
 import { SplitText } from 'gsap/SplitText';
 

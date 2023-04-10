@@ -1,6 +1,5 @@
 import { getCurrentBreakpoint } from '@finsweet/ts-utils';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 /**
  * Animate the about hero section with GSAP and ScrollTrigger.
@@ -23,8 +22,6 @@ export const aboutHero = (): void => {
   stickyWrapper.style.height = `${
     (groups.offsetHeight + list.offsetHeight - textWrapper.offsetHeight) * multiplier
   }px`;
-
-  console.log('updated');
 
   // Get the content top and bottom positions
   const componentStyles = getComputedStyle(component);
