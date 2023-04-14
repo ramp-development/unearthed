@@ -50,7 +50,7 @@ export const homeServices = (): void => {
     const timeline = gsap.timeline({
       scrollTrigger: {
         trigger: child,
-        start: `top ${top + 128}`,
+        start: `top ${window.innerHeight - top}`,
         end: `top ${top}`,
         scrub: 1,
       },

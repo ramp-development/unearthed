@@ -5,7 +5,7 @@ import { values } from './values';
 
 export const about = () => {
   aboutHero();
-  scale();
+  // scale();
   slider();
   values();
 };

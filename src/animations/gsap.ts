@@ -1,7 +1,19 @@
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText } from 'gsap/SplitText';
 
 export const gsapAnimations = (wrappers) => {
+  const nav = document.querySelector('.nav_bar');
+  const navTl = gsap.timeline({
+    scrollTrigger: {
+      trigger: nav,
+      start: 'top top',
+      end: '+=400',
+      scrub: 1,
+    },
+  });
+
+  navTl.to(nav, { paddingTop: 20, paddingBottom: 20 });
   wrappers.forEach((wrapper) => {
     // get the re-used components
     const header = wrapper.querySelector('[data-animation-element="header"]');

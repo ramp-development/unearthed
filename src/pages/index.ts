@@ -7,8 +7,7 @@ import { home } from './home';
 import { services } from './services';
 
 export const pages = () => {
-  const { pathname } = window.location;
-  switch (pathname) {
+  switch (window.location.pathname) {
     case '/':
       home();
       break;
