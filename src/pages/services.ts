@@ -1,5 +1,6 @@
 import { Splide } from '@splidejs/splide';
 export const services = () => {
+  console.log('services page loaded');
   const slider = new Splide('.splide.is-projects', {
     gap: '32px',
     perPage: 1,
