@@ -5,8 +5,6 @@ export const initBackgroundTransitions = (triggers: HTMLElement | HTMLElement[])
   // make images an array if it isn't already
   if (!Array.isArray(triggers)) triggers = [triggers];
 
-  console.log(triggers);
-
   triggers.forEach((trigger, index) => {
     const timeline = gsap.timeline({
       scrollTrigger: {
@@ -29,5 +27,9 @@ export const initBackgroundTransitions = (triggers: HTMLElement | HTMLElement[])
       .to('html', { '--standard-background': backgroundColor }, '<')
       .to('html', { '--brand-text': brand }, '<')
       .to('html', { '--brand-background': brand }, '<');
+
+    document.addEventListener('barba', () => {
+      timeline.kill();
+    });
   });
 };

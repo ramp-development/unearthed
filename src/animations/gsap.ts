@@ -66,7 +66,7 @@ export const gsapAnimations = (wrappers) => {
       });
     });
 
-    timeline.from(sub, { opacity: 0, translateY: -16 }, '> 0.1');
+    timeline.from(sub, { opacity: 0, translateY: -16 }, '< 0.1');
 
     timeline.from(content, { opacity: 0, translateY: -32, duration: 2 }, '< 0.5');
   });

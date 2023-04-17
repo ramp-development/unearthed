@@ -5,6 +5,17 @@ import { gsap } from 'gsap';
  * Adjust the home services section layout.
  */
 export const homeServices = (): void => {
+  const replaceWrappers = [...document.querySelectorAll('[data-replace-image="wrapper"]')];
+  replaceWrappers.forEach((wrapper) => {
+    const image = wrapper.querySelector('[data-replace-image="image"]') as HTMLElement;
+    const text = wrapper.querySelector('[data-replace-image="text"]') as HTMLElement;
+
+    const parser = new DOMParser();
+    const svg = parser.parseFromString(text.textContent, 'image/svg+xml');
+
+    image.replaceWith(svg.documentElement);
+    text.remove();
+  });
   if (getCurrentBreakpoint() !== 'main') return;
 
   // Get the home services section and its child elements

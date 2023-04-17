@@ -1,8 +1,11 @@
 import barba from '@barba/core';
-import { restartWebflow } from '@finsweet/ts-utils';
+import { restartWebflow, TABS_CSS_CLASSES } from '@finsweet/ts-utils';
 import { gsap } from 'gsap';
 import { Flip } from 'gsap/Flip';
 import { pages } from 'src/pages';
+
+import { initBackgroundTransitions } from '$utils/initBackgroundTransitions';
+import { initTabs } from '$utils/initTabs';
 
 import { flip } from './transitions/flip';
 import { placeItems } from './transitions/placeItems';
@@ -11,9 +14,19 @@ export const barbaAnimations = () => {
   barba.hooks.enter((data) => {
     restartWebflow();
     pages();
+    const event = new Event('barba');
+    document.dispatchEvent(event);
   });
   barba.hooks.afterEnter((data) => {
     window.scrollTo(0, 0);
+    console.log('afterEnter');
+    const backgroundTransitions = [
+      ...data?.next.container.querySelectorAll('[ramp-gsap="background"]'),
+    ];
+    if (backgroundTransitions) initBackgroundTransitions(backgroundTransitions);
+
+    const tabs = [...data?.next.container.querySelectorAll(`.${TABS_CSS_CLASSES.tabs}`)];
+    if (tabs) initTabs(tabs);
   });
   barba.hooks.after((data) => {
     data.next.container.style.removeProperty('position');

@@ -1,7 +1,5 @@
 import { animations } from 'src/animations';
 
-import { initBackgroundTransitions } from '$utils/initBackgroundTransitions';
-
 import { about } from './about';
 import { home } from './home';
 import { services } from './services';
@@ -20,7 +18,4 @@ export const pages = () => {
   }
 
   animations();
-
-  const backgroundTransitions = [...document.querySelectorAll('[ramp-gsap="background"]')];
-  if (backgroundTransitions) initBackgroundTransitions(backgroundTransitions);
 };
