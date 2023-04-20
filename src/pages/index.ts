@@ -4,6 +4,7 @@ import { about } from './about';
 import { home } from './home';
 import { industryTemplate } from './industryTemplate';
 import { services } from './services';
+import { serviceTemplate } from './serviceTemplate';
 
 export const pages = () => {
   const { pathname } = window.location;
@@ -18,7 +19,9 @@ export const pages = () => {
       services();
       break;
     default:
-      if (pathname.includes('/industries/')) {
+      if (pathname.includes('/our-services/')) {
+        serviceTemplate();
+      } else if (pathname.includes('/industries/')) {
         industryTemplate();
       }
   }
