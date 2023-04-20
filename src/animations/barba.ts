@@ -18,6 +18,7 @@ export const barbaAnimations = () => {
     document.dispatchEvent(event);
   });
   barba.hooks.afterEnter((data) => {
+    window.scrollTo(0, 1);
     window.scrollTo(0, 0);
     console.log('afterEnter');
     const backgroundTransitions = [
@@ -27,11 +28,22 @@ export const barbaAnimations = () => {
 
     const tabs = [...data?.next.container.querySelectorAll(`.${TABS_CSS_CLASSES.tabs}`)];
     if (tabs) initTabs(tabs);
+
+    const backgroundColor = '#000';
+    const color = '#fff';
+    const brand = '#b1ff00';
+
+    gsap.to('html', { '--standard-text': color, duration: 0.25 });
+    gsap.to('html', { '--standard-background': backgroundColor, duration: 0.25 }, '<');
+    gsap.to('html', { '--brand-text': brand, duration: 0.25 }, '<');
+    gsap.to('html', { '--brand-background': brand, duration: 0.25 }, '<');
+    return gsap.to(data?.current.container, { opacity: 0, duration: 0.25 }, '<');
   });
   barba.hooks.after((data) => {
     data.next.container.style.removeProperty('position');
     data.next.container.style.removeProperty('top');
     data.next.container.style.removeProperty('left');
+    if (document.querySelector('[fs-cmsslider-element]')) location.reload();
   });
 
   barba.init({

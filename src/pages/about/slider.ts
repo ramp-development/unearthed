@@ -10,6 +10,8 @@ export const slider = () => {
     arrows: false,
     speed: 350,
     easing: 'cubic-bezier(.165, .84, .44, 1)',
+    autoplay: true,
+    interval: 4000,
     breakpoints: {
       991: {
         fixedWidth: '50%',

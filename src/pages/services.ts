@@ -10,6 +10,8 @@ export const services = () => {
     speed: 350,
     easing: 'cubic-bezier(.165, .84, .44, 1)',
     pagination: false,
+    autoplay: true,
+    interval: 4000,
     breakpoints: {
       991: {
         fixedWidth: '50vw',

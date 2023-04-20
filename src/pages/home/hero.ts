@@ -6,7 +6,7 @@ import { runAfterImagesLoaded } from '$utils/runAfterImagesLoaded';
 
 export const homeHero = () => {
   // Define reused elements
-  const nav = document.querySelector('.nav_component');
+  const navs = document.querySelectorAll('.nav_component');
   const component = document.querySelector('.home-hero_component');
   if (!component) return;
 
@@ -82,7 +82,7 @@ export const homeHero = () => {
       .fromTo(evenGroups, { x: 0 }, { x: '-100%', duration: 20, ease: 'none', repeat: -1 }, '<')
       .fromTo(oddGroups, { x: 0 }, { x: '100%', duration: 20, ease: 'none', repeat: -1 }, '<')
       .to(clipWrapper, { scale, translateX: pathPosition.x, translateY: pathPosition.y }, '< 2')
-      .to(nav, { opacity: 1, translateY: 0 }, '<')
+      .to(navs, { opacity: 1, translateY: 0 }, '<')
       .to('#clip-start', { morphSVG: '#clip-end', onComplete: heroMouse }, '<')
       .from(
         heroSplit.lines,

@@ -22,7 +22,7 @@ export const initBackgroundTransitions = (triggers: HTMLElement | HTMLElement[])
     const brand = theme === 'dark' ? '#b1ff00' : '#4708f5';
 
     timeline
-      .to(document.body, { backgroundColor, color })
+      .to('[data-barba="container"]', { backgroundColor, color })
       .to('html', { '--standard-text': color }, '<')
       .to('html', { '--standard-background': backgroundColor }, '<')
       .to('html', { '--brand-text': brand }, '<')
