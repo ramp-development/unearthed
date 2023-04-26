@@ -11,6 +11,6 @@ export const initTabs = (tabs: TabsElement[]) => {
       tabPane.style.removeProperty('display');
     });
 
-    tab.style.minHeight = `${minHeight}px`;
+    tab.querySelector(`.${TABS_CSS_CLASSES.tabsContent}`).style.minHeight = `${minHeight}px`;
   });
 };

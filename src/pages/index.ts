@@ -1,5 +1,7 @@
 import { animations } from 'src/animations';
 
+import { initLogos } from '$utils/initLogos';
+
 import { about } from './about';
 import { home } from './home';
 import { industryTemplate } from './industryTemplate';

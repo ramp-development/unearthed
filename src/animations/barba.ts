@@ -5,6 +5,7 @@ import { Flip } from 'gsap/Flip';
 import { pages } from 'src/pages';
 
 import { initBackgroundTransitions } from '$utils/initBackgroundTransitions';
+import { initLogos } from '$utils/initLogos';
 import { initTabs } from '$utils/initTabs';
 
 import { flip } from './transitions/flip';
@@ -28,6 +29,9 @@ export const barbaAnimations = () => {
 
     const tabs = [...data?.next.container.querySelectorAll(`.${TABS_CSS_CLASSES.tabs}`)];
     if (tabs) initTabs(tabs);
+
+    const logos = data?.next.container.querySelector('.logos_component');
+    if (logos) initLogos(logos);
 
     const backgroundColor = '#000';
     const color = '#fff';
